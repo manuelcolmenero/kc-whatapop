@@ -16,7 +16,8 @@
   |   - 2 dígitos mínimo y máximo (parte decimal)                    |
   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-  <button
+  <button 
+    (click)="navigateDetail(data)"
     class="button expanded"
     [class.success]="data.state === 'selling'"
     [class.secondary]="data.state === 'sold'">
