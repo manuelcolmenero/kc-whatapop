@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-// GreenPath: Se incluye el Router para poder navegar
+  /* Green Path:
+     Se importa Router para poder navegar
+  */
 import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs/Subject';
@@ -20,6 +22,9 @@ export class ProductsCollectionComponent implements OnDestroy, OnInit {
   products: Product[];
   private _filterStream$: Subject<ProductFilter> = new Subject;
 
+  /* Green Path:
+     Se incluye _route para poder utilizar la propiedad navigate
+  */
   constructor(
     private _productService: ProductService,
     private _router: Router
@@ -50,10 +55,11 @@ export class ProductsCollectionComponent implements OnDestroy, OnInit {
   | como parámetro el identificador del producto.                    |
   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-
+  /* Green Path:
+     Se incluye el evento 'navigateDetail' y el router a la pantalla 
+     de detalle de producto
+  */
   navigateDetail(productDetail: Product): void {
-    
-    alert("Incluir routing de navegación: " + productDetail.id);
     this._router.navigate(['/products', productDetail.id]);
   }
 }
