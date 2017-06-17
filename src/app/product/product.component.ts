@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Product } from '../product';
 
@@ -22,4 +22,11 @@ export class ProductComponent {
   | mismo.                                                           |
   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+  // GreenPath: Se genera el decorador 'Output' para exponer eventos 
+  // a otros componentes
+  @Output() clickDetail = new EventEmitter<Product>();
+
+  navigateDetail(productDetail: Product): void {
+    this.clickDetail.emit(productDetail);
+  }
 }
