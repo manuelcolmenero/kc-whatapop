@@ -10,7 +10,9 @@
     | Suscribe el componente ProductComponent al evento que hayas      |
     | definido en él para notificar los clics sobre los productos.     |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
+    <!-- Green Path:
+       Se incluye el evento 'clickDetail' que ejecuta 'navigateDetail'
+    -->
     <app-product
       *ngFor="let product of products"
       [data]="product"

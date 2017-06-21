@@ -22,10 +22,17 @@ export class ProductComponent {
   | mismo.                                                           |
   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-  // GreenPath: Se genera el decorador 'Output' para exponer eventos 
-  // a otros componentes
+  /* Green Path: 
+     Se genera el decorador 'Output' para exponer eventos a otros 
+     componentes
+  */
   @Output() clickDetail = new EventEmitter<Product>();
 
+  /* Green Path: 
+     Se genera 'navigateDetail' para pasar el objeto 'productDetail'
+     para que se pueda utilizar en el resto de componentes las propiedades
+     del objeto.
+  */
   navigateDetail(productDetail: Product): void {
     this.clickDetail.emit(productDetail);
   }
