@@ -59,9 +59,35 @@ export class ProductService {
     |       state=x (siendo x el estado)                               |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+    // Red Path: Si existe algun campo de filtro se analiza cual para informar
+    
+    // Variable de filtro
+    let filterValue = '';
+
+    if (filter) {
+      // Se obtienen los campos de filtro
+      const texto = filter.text;
+      const category = filter.category;
+      const state = filter.state;
+
+
+      // Se pregunta si se ha informado el texto.
+      if (texto) {
+          filterValue = `&q=${texto}`;
+      }
+      // Se pregunta si se ha informado la categoria.
+      if (category && category !== '0') {
+          filterValue += `&category.id=${category}`;
+      }
+      // Yellow Path: Se pregunta si se ha informado el estado.
+      if (state) {
+          filterValue += `&state=${state}`;
+      }
+    }
+
     return this._http
     // Pink Path: se incluye en el GET la ordenación
-      .get(`${this._backendUri}/products?_sort=publishedDate&_order=DESC`)
+      .get(`${this._backendUri}/products?_sort=publishedDate&_order=DESC${filterValue}`)
       .map((data: Response): Product[] => Product.fromJsonToList(data.json()));
   }
 
