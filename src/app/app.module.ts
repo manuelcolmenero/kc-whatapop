@@ -21,6 +21,10 @@ import { SoldProductsResolveService } from './sold-products-resolve.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserService } from './user.service';
 
+// Blue Path: Se añade imports publication-date.pipe
+import { PublicationDatePipe } from './publication-date.pipe' 
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 | Blue Path                                                        |
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
@@ -35,8 +39,10 @@ import { UserService } from './user.service';
     ProductResetComponent,
     ProductComponent,
     ProductsCollectionComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PublicationDatePipe
   ],
+  // Blue Path: Se añade en imports AppRoutingModule
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

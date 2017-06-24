@@ -19,8 +19,13 @@
       | fecha de publicación.                                            |
       |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
+
+      <!--
+        Blue Path: Se añade el pipe 'publicationDate' para poder transformar
+        el dato de fecha a un texto más asequible para el usuario.
+      -->
       <span>
-        {{ product.publishedDate }}
+        {{ product.publishedDate | publicationDate }}
       </span>
     </p>
     <p [innerHtml]="product.description"></p>
