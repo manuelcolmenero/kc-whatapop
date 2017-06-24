@@ -3,9 +3,13 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { Product } from './product';
+import { ProductFilter } from './product-filter';
+import { ProductService } from './product.service';
 
 @Injectable()
 export class SoldProductsResolveService implements Resolve<Product[]> {
+  
+  constructor ( private _productService: ProductService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Product[]> {
 
@@ -23,7 +27,20 @@ export class SoldProductsResolveService implements Resolve<Product[]> {
     |    ProductService, que tendrás que inyectar como dependencia.    |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-    return null;
+    /* 
+    Yellow Path: 
+      * Se crea un filtro para el modelo ProductFilter que coja todos los
+        productos que tengan 'state' a 'sold'
+        
+      * Se retorna el resultado de obtener los productos una vez filtrados. 
+        Para ello se accede al metodo 'getProducts' de product.service.ts 
+        que se ha modificado para permitir filtar por la propiedad 'state' 
+      */
+    const productFilter: ProductFilter = <ProductFilter>{
+      state: 'sold'
+    };
+
+    return this._productService.getProducts(productFilter);
   }
 
 }

@@ -79,7 +79,11 @@ export class ProductService {
       if (category && category !== '0') {
           filterValue += `&category.id=${category}`;
       }
-      // Yellow Path: Se pregunta si se ha informado el estado.
+      /* Yellow Path: 
+        Se pregunta si se ha informado el estado para 
+        devolver aquellos registros que cumplan el valor 
+        recibido.
+      */
       if (state) {
           filterValue += `&state=${state}`;
       }
