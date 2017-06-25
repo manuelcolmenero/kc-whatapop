@@ -25,7 +25,11 @@
     [class.success]="data.state === 'selling'"
     [class.secondary]="data.state === 'sold'">
       <span *ngIf="data.state === 'selling'">
-        Comprar por {{ data.price }} €
+  <!-- Purple Path: 
+     Se incluye el pipe "number : '1.2-2'" para que el precio tenga 
+     como mínimo un digito entero y dos decimales.
+  -->
+        Comprar por {{ data.price | number : '1.2-2' }} €
       </span>
       <span *ngIf="data.state === 'sold'">
         Ver detalles
