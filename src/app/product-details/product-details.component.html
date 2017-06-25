@@ -1,6 +1,25 @@
 <div class="row" *ngIf="product">
   <div class="medium-4 columns">
     <img [src]="product.photo" class="thumbnail" />
+    <!-- Broken White Path: 
+      Se añaden los botones para añadir y eliminar de favoritos.
+      
+      Se llama a la función 'isFavorite' para averiguar
+      si el registro se encuentra entre favoritos o no.
+    -->
+    <div *ngIf="isFavorite(product.id) === false">
+      <button (click)="clickFavorite(product.id)" 
+              class="button success expanded">
+        Añadir a favoritos
+      </button>
+    </div>
+    
+    <div *ngIf="isFavorite(product.id) === true">
+      <button (click)="clickFavorite(product.id)" 
+              class="button alert expanded">
+        Eliminar de favoritos
+      </button>
+    </div>
   </div>
   <div class="medium-8 columns">
     <h3>{{ product.name }}</h3>

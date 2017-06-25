@@ -7,6 +7,8 @@ import { ConfirmationService } from 'primeng/primeng';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 
+import { FavoritesService } from '../favorites.service';
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -21,7 +23,8 @@ export class ProductDetailsComponent implements OnDestroy, OnInit {
     private _productService: ProductService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _confirmationService: ConfirmationService) { }
+    private _confirmationService: ConfirmationService,
+    private _FavoriteService: FavoritesService) { }
 
   ngOnInit(): void {
     this._route.data.forEach((data: { product: Product }) => this.product = data.product);
@@ -55,6 +58,17 @@ export class ProductDetailsComponent implements OnDestroy, OnInit {
     });
   }
 
+  clickFavorite (productId: number): void {
+    this._FavoriteService.switchFavorite(productId);
+  }
+
+  /* Broken White Path:
+    Se llama a la función del servicio '_FavoriteService' pasando el 
+    producto para averiguar si está en la lista de favoritos o no.
+  */
+  isFavorite (productId: number) {
+   return this._FavoriteService.isFavorite(productId);
+  }
   goBack(): void {
     window.history.back();
   }
