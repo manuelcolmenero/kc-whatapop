@@ -42,7 +42,12 @@
     <button *ngIf="product.state === 'selling'"
             (click)="showPurchaseWarning()"
             class="button large expanded">
-      Comprar por {{ product.price }} €
+
+    <!-- 
+      Purple Path: Se incluye el pipe "number : '1.2-2'" para que el precio 
+      tenga como mínimo un digito entero y dos decimales.
+    -->
+      Comprar por {{ product.price | number : '1.2-2' }} €
     </button>
     <button (click)="goBack()" class="warning button expanded">Volver</button>
   </div>
