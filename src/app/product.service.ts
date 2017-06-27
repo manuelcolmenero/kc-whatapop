@@ -69,6 +69,8 @@ export class ProductService {
       const texto = filter.text;
       const category = filter.category;
       const state = filter.state;
+      const minPrice = filter.minPrice;
+      const maxPrice = filter.maxPrice;
 
 
       // Se pregunta si se ha informado el texto.
@@ -84,9 +86,20 @@ export class ProductService {
         devolver aquellos registros que cumplan el valor 
         recibido.
       */
-      alert (filter.state);
       if (state) {
           filterValue += `&state=${state}`;
+      }
+      /* Red Wine Path: 
+        Se filtran los productos por precio mínimo y máximo
+      */
+      if (minPrice || maxPrice) {
+
+        if (minPrice > 0) {
+          filterValue += `&price_gte=${minPrice.toString()}`;
+        }
+        if (maxPrice > 0) {
+          filterValue += `&price_lte=${maxPrice.toPrecision()}`;
+        }
       }
     }
 
