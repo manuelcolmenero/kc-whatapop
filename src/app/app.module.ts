@@ -27,6 +27,9 @@ import { PublicationDatePipe } from './publication-date.pipe'
 // Broken White Path: Se añade imports para el boton de favoritos
 import { FavoritesService } from "./favorites.service";
 
+// Red Wine Path: Se añade imports para el boton de favoritos
+import { StateService } from "./state.service";
+
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 | Blue Path                                                        |
@@ -62,7 +65,8 @@ import { FavoritesService } from "./favorites.service";
     ProductService,
     SoldProductsResolveService,
     UserService,
-    FavoritesService
+    FavoritesService,
+    StateService
   ],
   bootstrap: [AppComponent]
 })

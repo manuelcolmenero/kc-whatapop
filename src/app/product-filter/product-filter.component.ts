@@ -5,6 +5,9 @@ import { Category } from '../category';
 import { CategoryService } from '../category.service';
 import { ProductFilter } from '../product-filter';
 
+import { State } from '../state';
+import { StateService } from '../state.service';
+
 @Component({
   selector: 'app-product-filter',
   templateUrl: './product-filter.component.html',
@@ -16,18 +19,29 @@ export class ProductFilterComponent implements OnDestroy, OnInit {
 
   productFilter: ProductFilter = {};
   categories: Category[];
-  private _categoriesSubscription: Subscription;
+  states: State[];
 
-  constructor(private _categoryService: CategoryService) { }
+  private _categoriesSubscription: Subscription;
+  private _statesSubscription: Subscription;
+
+  constructor(
+    private _categoryService: CategoryService,
+    private _stateService: StateService
+    ) { }
 
   ngOnInit(): void {
     this._categoriesSubscription = this._categoryService
       .getCategories()
       .subscribe((data: Category[]) => this.categories = data);
+
+    this._statesSubscription = this._stateService
+      .getStates()
+      .subscribe((data: State[]) => this.states = data);
   }
 
   ngOnDestroy(): void {
     this._categoriesSubscription.unsubscribe();
+    this._statesSubscription.unsubscribe();
   }
 
   notifyHost(): void {

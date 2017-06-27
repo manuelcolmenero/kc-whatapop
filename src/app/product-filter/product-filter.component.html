@@ -3,13 +3,45 @@
     <div class="small-6 medium-2 large-3 columns">
       <input [(ngModel)]="productFilter.text" type="text" placeholder="Pe. Uncharted">
     </div>
-    <div class="small-6 medium-2 large-3 columns">
+    <div class="small-6 medium-2 large-2 columns">
       <select [(ngModel)]="productFilter.category">
         <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
       </select>
     </div>
+
+    <!-- 
+      Red Wine Path:
+      Se añade el componente para poder filtrar por estado e importe mínimo y máximo
+    -->
+
+    <div class="small-6 medium-2 large-2 columns">
+      <select [(ngModel)]="productFilter.state">
+        <option value="" selected>-</option>
+        <option value="selling">En venta</option>
+        <option value="sold">Vendido</option>
+      </select>
+    </div>
+    
+    <div class="small-6 medium-2 large-2 columns">
+      <input [(ngModel)]="productFilter.minPrice" 
+             type="number" 
+             placeholder="Precio mínimo">
+    </div>  
+
+    <div class="small-6 medium-2 large-2 columns">
+      <input [(ngModel)]="productFilter.maxPrice" 
+             type="number" 
+             placeholder="Precio máximo">
+    </div>  
+
+
+
+
+
     <div class="small-12 medium-3 large-2 columns">
       <button (click)="notifyHost()" class="button expanded">Buscar</button>
     </div>
   </div>
 </div>
+
+

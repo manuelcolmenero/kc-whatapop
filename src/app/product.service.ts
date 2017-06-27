@@ -84,6 +84,7 @@ export class ProductService {
         devolver aquellos registros que cumplan el valor 
         recibido.
       */
+      alert (filter.state);
       if (state) {
           filterValue += `&state=${state}`;
       }
