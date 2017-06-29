@@ -20,6 +20,7 @@ import { ProductService } from '../product.service';
 export class ProductsCollectionComponent implements OnDestroy, OnInit {
 
   products: Product[];
+  sort: string;
   private _filterStream$: Subject<ProductFilter> = new Subject;
 
   /* Green Path:
@@ -43,6 +44,10 @@ export class ProductsCollectionComponent implements OnDestroy, OnInit {
 
   filterCollection(filter: ProductFilter): void {
     this._filterStream$.next(filter);
+  }
+
+  sortCollection(sortData: string): void {
+    this.sort=sortData;
   }
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|

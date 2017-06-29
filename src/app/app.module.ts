@@ -27,6 +27,8 @@ import { PublicationDatePipe } from './publication-date.pipe'
 // Broken White Path: Se añade imports para el boton de favoritos
 import { FavoritesService } from "./favorites.service";
 
+// Red Wine Path: Se añade imports del pipe de ordenación
+import { OrderProductPipe } from './order-product.pipe';
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 | Blue Path                                                        |
@@ -43,7 +45,8 @@ import { FavoritesService } from "./favorites.service";
     ProductComponent,
     ProductsCollectionComponent,
     UserProfileComponent,
-    PublicationDatePipe
+    PublicationDatePipe,
+    OrderProductPipe
   ],
   // Blue Path: Se añade en imports AppRoutingModule
   imports: [
