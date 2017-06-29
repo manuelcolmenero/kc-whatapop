@@ -1,6 +1,15 @@
 <div class="row">
   <div class="small-12 large-12 columns">
-    <app-product-filter (onSearch)="filterCollection($event)"></app-product-filter>
+
+    <!-- 
+      Red Wine Path
+      Se aplica al evento 'onSort' el resultado de ejecutar
+      'sortCollection'
+    -->
+    <app-product-filter 
+      (onSearch)="filterCollection($event)"
+      (onSort)="sortCollection($event)">
+      </app-product-filter>
   </div>
   <div *ngIf="products?.length > 0" class="small-up-2 medium-up-4 large-up-6">
 
@@ -12,9 +21,13 @@
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!-- Green Path:
        Se incluye el evento 'clickDetail' que ejecuta 'navigateDetail'
+    
+      Red Wine Path
+      Se aplica el pipe 'orderProduct' al listado de productos
+      pasando por parametro el campo de ordenación
     -->
     <app-product
-      *ngFor="let product of products"
+      *ngFor="let product of products | orderProduct:sort"
       [data]="product"
       class="column"
       (clickDetail)="navigateDetail($event)">

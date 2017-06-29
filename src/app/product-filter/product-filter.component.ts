@@ -14,6 +14,9 @@ export class ProductFilterComponent implements OnDestroy, OnInit {
 
   @Output() onSearch: EventEmitter<ProductFilter> = new EventEmitter();
 
+  // Red Wine Path: Suscripción al EventEmmiter para ordenación
+  @Output() onSort: EventEmitter<string> = new EventEmitter();
+
   productFilter: ProductFilter = {};
   categories: Category[];
 
@@ -33,6 +36,13 @@ export class ProductFilterComponent implements OnDestroy, OnInit {
 
   notifyHost(): void {
     this.onSearch.emit(this.productFilter);
+  }
+
+  // Red Wine Path: 
+  // Cuando se pulsa en el combo se ejecuta la función que 
+  // invoca el evento de ordenación
+  sortProducts(event: any): void{
+    this.onSort.emit(event);
   }
 
 }

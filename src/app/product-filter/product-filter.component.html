@@ -1,9 +1,11 @@
 <div>
   <div class="row">
     <div class="small-6 medium-2 large-3 columns">
+      <label>Filtrar por titulo:</label>
       <input [(ngModel)]="productFilter.text" type="text" placeholder="Pe. Uncharted">
     </div>
     <div class="small-6 medium-2 large-2 columns">
+      <label>Filtrar por categoria:</label>
       <select [(ngModel)]="productFilter.category">
         <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
       </select>
@@ -15,29 +17,50 @@
     -->
 
     <div class="small-6 medium-2 large-2 columns">
+      <label>Filtrar por estado producto:</label>
       <select [(ngModel)]="productFilter.state">
         <option value="" selected>-</option>
         <option value="selling">En venta</option>
         <option value="sold">Vendido</option>
       </select>
     </div>
-    
-    <div class="small-6 medium-2 large-2 columns">
-      <input [(ngModel)]="productFilter.minPrice" 
-             type="number" 
-             placeholder="Precio mínimo">
-    </div>  
 
     <div class="small-6 medium-2 large-2 columns">
+      <label>Precio mínimo:</label>
+      <input [(ngModel)]="productFilter.minPrice" 
+            type="number" 
+            placeholder="Precio mínimo">
+    </div>
+
+    <div class="small-6 medium-2 large-2 columns">
+      <label>Precio máximo:</label>
       <input [(ngModel)]="productFilter.maxPrice" 
              type="number" 
              placeholder="Precio máximo">
-    </div>  
+    </div>
 
+    <!-- 
+      Red Wine Path:
+      Se añade el combo de selección de tipo de ordenación.
+      Para ello, cada vez que se ejecute el evento 'Change'
+      se llamará a 'sortProducts' pasandole el valor del 
+      objeto seleccionado, en este caso el combo.
+    -->
+    <div class="small-6 medium-2 large-2 columns">
+      <label>Ordenar por:</label>
+      <select (change)="sortProducts($event.target.value)">
+        <option value="" selected>-</option>
+        <option value="nameA">Titulo Ascendente</option>
+        <option value="nameD">Titulo Descendente</option>  
+        <option value="priceA">Precio Ascendente</option>
+        <option value="priceD">Precio Descendente</option>
+        <option value="dateA">Fecha Ascendente</option>
+        <option value="dateD">Fecha Descendente</option>
+      </select>
+    </div>
+    
     <div class="small-12 medium-3 large-2 columns">
       <button (click)="notifyHost()" class="button expanded">Buscar</button>
     </div>
   </div>
 </div>
-
-
