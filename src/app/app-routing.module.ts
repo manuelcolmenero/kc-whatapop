@@ -7,6 +7,11 @@ import { ProductResetComponent } from './product-reset/product-reset.component';
 import { ProductsCollectionComponent } from './products-collection/products-collection.component';
 import { SoldProductsResolveService } from './sold-products-resolve.service';
 
+
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserDetailsResolveService } from './user-details-resolve.service';
+
+
 const routes: Routes = [
   {
     path: 'products',
@@ -17,6 +22,13 @@ const routes: Routes = [
     component: ProductDetailsComponent,
     resolve: {
       product: ProductDetailsResolveService
+    }
+  },
+  {
+    path: 'users/:userId',
+    component: UserDetailsComponent,
+    resolve: {
+      product: UserDetailsResolveService
     }
   },
   {
