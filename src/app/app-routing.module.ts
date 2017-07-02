@@ -24,11 +24,15 @@ const routes: Routes = [
       product: ProductDetailsResolveService
     }
   },
+  /*
+    Brick Red Path:
+    Se añade la ruta para ir a la pantalla de detalle de usuarios
+  */
   {
     path: 'users/:userId',
     component: UserDetailsComponent,
     resolve: {
-      product: UserDetailsResolveService
+      user: UserDetailsResolveService
     }
   },
   {
