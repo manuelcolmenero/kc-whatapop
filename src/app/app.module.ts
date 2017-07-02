@@ -30,6 +30,15 @@ import { FavoritesService } from "./favorites.service";
 // Red Wine Path: Se añade imports del pipe de ordenación
 import { OrderProductPipe } from './order-product.pipe';
 
+  /*
+    Brick Red Path:
+    Se añaden los import para poder viajar y filtrar el listado de productos
+    por vendedor
+  */
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserDetailsResolveService } from './user-details-resolve.service';
+import { UserProductPipe } from './user-product.pipe';
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 | Blue Path                                                        |
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
@@ -46,7 +55,9 @@ import { OrderProductPipe } from './order-product.pipe';
     ProductsCollectionComponent,
     UserProfileComponent,
     PublicationDatePipe,
-    OrderProductPipe
+    OrderProductPipe,
+    UserDetailsComponent,
+    UserProductPipe
   ],
   // Blue Path: Se añade en imports AppRoutingModule
   imports: [
@@ -65,7 +76,8 @@ import { OrderProductPipe } from './order-product.pipe';
     ProductService,
     SoldProductsResolveService,
     UserService,
-    FavoritesService
+    FavoritesService,
+    UserDetailsResolveService
   ],
   bootstrap: [AppComponent]
 })

@@ -9,6 +9,8 @@ import { ProductService } from '../product.service';
 
 import { FavoritesService } from '../favorites.service';
 
+import { User } from "../user";
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -73,4 +75,7 @@ export class ProductDetailsComponent implements OnDestroy, OnInit {
     window.history.back();
   }
 
+  navigateUserDetail(userDetail: User): void {
+    this._router.navigate(['/users', userDetail.id]);
+  }
 }
